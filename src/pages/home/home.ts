@@ -1,14 +1,20 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,PopoverController } from 'ionic-angular';
+
+import { LocalizationPage } from '../localization/localization';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  constructor(public popCtl: PopoverController){}
 
-  constructor(public navCtrl: NavController) {
-
+  popLocalization(ctlEvent){
+    let popover = this.popCtl.create(LocalizationPage);
+    popover.present({
+      ev: ctlEvent
+    });
   }
 
 }
